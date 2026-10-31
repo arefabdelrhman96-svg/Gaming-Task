@@ -1,0 +1,949 @@
+html { scroll-behavior: smooth; }
+section[id] { scroll-margin-top: 90px; }
+
+:root {
+  --accent: #b4e033;
+  --accent-hover: #b4e033;   /* الأصفر عند الهوفر */
+  --dark: #121212;
+}
+
+body {
+  font-family: "poppins", sans-serif;
+  background: var(--dark);
+  color: #fff;
+}
+
+.text-accent { color: var(--accent); }
+
+/* ===== Navbar ===== */
+.main-nav {
+  background: rgba(10, 10, 10, .95);
+  backdrop-filter: blur(8px);
+  padding: 1rem 0;
+  transition: background .3s;
+}
+.main-nav:hover { background: #000; }   /* هوفر على الشريط كله */
+
+ .navbar-brand { color: var(--accent); font-weight: 700; }
+ 
+.navbar-brand:hover { color: var(--accent-hover); }
+
+ /* كل الروابط بيضاء، وعند الهوفر تتحول للأصفر */
+.nav-link {
+  color: #fff !important;
+  font-weight: 500;
+  transition: color .3s;
+}
+.nav-link:hover {
+  color: var(--accent-hover) !important;
+}
+
+/* Home فقط يبقى ملوّن وثابت حتى مع الهوفر */
+.nav-link.active,
+.nav-link.active:hover {
+  color: var(--accent) !important;
+}
+
+.nav-icon { color: #fff; transition: color .3s, transform .3s; }
+.nav-icon:hover { color: var(--accent-hover); transform: scale(1.15); }
+
+/* ===== Buttons ===== */
+.btn-accent {
+  background: var(--accent);
+  color: #000;
+  font-weight: 700;
+  border: 2px solid var(--accent);
+  transition: all .3s;
+}
+.btn-accent:hover {
+  background: var(--accent-hover);
+  border-color: var(--accent-hover);
+  color: #000;
+}
+
+.btn-outline-accent {
+  background: transparent;
+  color: var(--accent);
+  font-weight: 700;
+  border: 2px solid var(--accent);
+  transition: all .3s;
+}
+.btn-outline-accent:hover {
+  background: var(--accent-hover);
+  border-color: var(--accent-hover);
+  color: #000;
+}
+
+/* ===== Hero ===== */
+.hero {
+  min-height: 100vh;
+  padding: 4rem 0;
+  background:
+    linear-gradient(rgba(0,0,0,.85), rgba(0,0,0,.9)),
+    url("images/hero-bg.jpg") center/cover no-repeat;
+  background-attachment: fixed;
+}
+.hero-title {
+  font-size: clamp(2.5rem, 6vw, 5rem);
+  font-weight: 700;
+  line-height: 1.1;
+}
+
+.hero-img {
+  border: 3px solid var(--accent);
+  border-radius: 20px;
+  width: 100%;
+  transition: transform .4s, box-shadow .4s;
+}
+.hero-img:hover {
+  transform: scale(1.02);
+  box-shadow: 0 0 30px rgba(180, 224, 51, .5);
+}
+
+.players-card {
+  position: absolute;
+  bottom: -20px;
+  left: -40px;
+  background: #1c1f1f;
+  border: 1px solid #333;
+  border-radius: 12px;
+  padding: 1rem 1.5rem;
+  transition: border-color .3s;
+}
+.players-card:hover { border-color: var(--accent-hover); }
+.players-card:hover i { color: var(--accent-hover) !important; }
+
+@media (max-width: 991px) {
+  .players-card { left: 10px; }
+}
+ /* ------------------------------------------------------------------------------------------ */
+/* ===== Our Latest Games ===== */
+html { scroll-behavior: smooth; }
+section[id] { scroll-margin-top: 90px; }
+
+.games { background: var(--dark); }
+
+.section-title {
+  font-family: "Unbounded", sans-serif;
+  font-weight: 900;
+  font-size: clamp(2rem, 5vw, 3.5rem);
+}
+
+/* مساحة حتى لا يُقص الكارت عند الهوفر */
+#gamesCarousel .carousel-inner { padding: 12px 6px; }
+
+.game-card {
+  border-radius: 20px;
+  overflow: hidden;
+  border: 2px solid transparent;
+  text-decoration: none;
+  color: #fff;
+  transition: border-color .3s, transform .3s;
+}
+
+.game-img {
+  width: 100%;
+  height: 420px;
+  object-fit: cover;
+  display: block;
+  transition: transform .5s;
+}
+
+/* التاجات */
+.game-tag {
+  background: rgba(0, 0, 0, .75);
+  color: #fff;
+  font-weight: 700;
+  font-size: .8rem;
+  padding: .4rem .8rem;
+  border-radius: 50px;
+}
+.game-tag i { color: var(--accent-hover); }
+
+/* الكلام مخفي ولا يظهر إلا عند الهوفر */
+.game-tags,
+.game-title {
+  opacity: 0;
+  transition: opacity .4s;
+}
+
+.game-title { background: transparent; }
+.game-title h5 { transition: color .3s; }
+
+/* ===== الهوفر على الكارت ===== */
+.game-card:hover {
+  border-color: var(--accent-hover);
+  transform: translateY(-5px);
+}
+.game-card:hover .game-img { transform: scale(1.05); }
+
+.game-card:hover .game-title {
+  background: linear-gradient(transparent, var(--accent) 60%);
+  padding-top: 5rem !important;
+}
+.game-card:hover .game-title h5 { color: #000; }
+
+.game-card:hover .game-tags,
+.game-card:hover .game-title { opacity: 1; }
+
+/* ===== الأسهم ===== */
+.arrow-btn {
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+  background: transparent;
+  color: #fff;
+  border: 2px solid #444;
+  font-size: 1.2rem;
+  transition: all .3s;
+}
+.arrow-btn:hover {
+  border-color: var(--accent-hover);
+  color: var(--accent-hover);
+}
+
+/* الموبايل والتابلت (لا يوجد هوفر باللمس) */
+@media (hover: none) {
+  .game-tags,
+  .game-title { opacity: 1; }
+}
+/* ---------------------------------------------------------- */
+/* ===== What We Do ===== */
+.services { background: var(--dark); }
+
+.text-accent-hover { color: var(--accent-hover); }
+
+.eyebrow {
+  color: var(--accent-hover);
+  font-weight: 700;
+  font-size: .85rem;
+  letter-spacing: .25em;
+}
+.eyebrow-line {
+  width: 60px;
+  height: 2px;
+  background: var(--accent-hover);
+}
+
+/* ----- كارت الخدمة ----- */
+.service-card {
+  position: relative;
+  height: 250px;
+  background: #1f2022;
+  border: 2px solid #2c2f33;
+  border-radius: 14px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 1rem;
+  transition: border-color .3s, transform .3s;
+}
+
+.service-icon {
+  width: 56px;
+  height: 56px;
+  border-radius: 10px;
+  background: #1e3347;
+  color: var(--accent-hover);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  transition: background .3s, color .3s;
+}
+
+.service-card h6 {
+  color: #fff;
+  font-weight: 700;
+  margin: 0;
+}
+
+/* المثلثين في الزوايا (يظهرون عند الهوفر) */
+.service-card::before,
+.service-card::after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 0;
+  opacity: 0;
+  transition: opacity .3s;
+}
+.service-card::before {          /* أعلى اليسار */
+  top: 12px;
+  left: 12px;
+  border-top: 22px solid var(--accent-hover);
+  border-right: 22px solid transparent;
+}
+.service-card::after {           /* أسفل اليمين */
+  bottom: 12px;
+  right: 12px;
+  border-bottom: 22px solid var(--accent-hover);
+  border-left: 22px solid transparent;
+}
+
+/* ----- الهوفر ----- */
+.service-card:hover {
+  border-color: var(--accent-hover);
+  transform: translateY(-4px);
+}
+.service-card:hover .service-icon {
+  background: var(--accent-hover);
+  color: #1f2022;
+}
+.service-card:hover::before,
+.service-card:hover::after { opacity: 1; }
+
+/* ----- كروت الصور (بدون هوفر) ----- */
+.service-img-card {
+  height: 250px;
+  border-radius: 14px;
+  overflow: hidden;
+  background: var(--accent-hover);
+  box-shadow: 0 0 20px rgba(255, 230, 0, .25);
+}
+.service-img-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* ----- الخط المضيء ----- */
+.glow-line {
+  width: 40%;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, var(--accent-hover), transparent);
+  box-shadow: 0 0 25px var(--accent-hover);
+}
+/* ------------------------------------------------------------------ */
+/* ===== Logos Marquee ===== */
+.logos-section {
+  position: relative;
+  overflow: hidden;
+  padding: 6rem 0 8rem;
+  background: var(--dark);
+}
+
+/* الإضاءة الخضراء في الخلفية */
+.logos-glow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 80%;
+  height: 420px;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(
+    ellipse at center,
+    rgba(180, 224, 51, .75) 0%,
+    rgba(180, 224, 51, .35) 35%,
+    transparent 70%
+  );
+  filter: blur(50px);
+  pointer-events: none;
+}
+
+.marquee {
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+  margin-bottom: 1.5rem;
+  /* تلاشي الحواف يمين وشمال */
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent);
+          mask-image: linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent);
+}
+
+.marquee-track {
+  display: flex;
+  width: max-content;
+}
+
+.marquee-group {
+  display: flex;
+  gap: 1.2rem;
+  padding-right: 1.2rem;   /* نفس قيمة gap حتى تكون الحركة سلسة */
+}
+
+.logo-box {
+  width: 120px;
+  height: 120px;
+  flex-shrink: 0;
+  border-radius: 18px;
+  background: #14243a;
+  border: 1px solid rgba(255, 255, 255, .06);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  transition: transform .3s, border-color .3s;
+}
+.logo-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.logo-box:hover {
+  transform: scale(1.08);
+  border-color: var(--accent-hover);
+}
+
+/* ===== الحركة ===== */
+.move-left  { animation: scroll-left  30s linear infinite; }
+.move-right { animation: scroll-right 30s linear infinite; }
+
+@keyframes scroll-left {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+@keyframes scroll-right {
+  from { transform: translateX(-50%); }
+  to   { transform: translateX(0); }
+}
+
+/* إيقاف الحركة عند الوقوف على الشريط (اختياري) */
+.marquee:hover .marquee-track { animation-play-state: paused; }
+
+@media (max-width: 576px) {
+  .logo-box { width: 90px; height: 90px; }
+}
+/* ------------------------------------------------------------------- */
+.team-section{
+  --accent:#c8f03c;
+  --muted:#a9adb8;
+  background:#0b0d14;
+  color:#fff;
+  padding:80px 0;
+}
+
+/* ===== العنوان ===== */
+.team-head{
+  margin-bottom:50px;
+}
+
+/* كلمة OUR TEAM بالأخضر مع الخطين على الجانبين */
+.team-eyebrow{
+  display:inline-flex;
+  align-items:center;
+  gap:14px;
+  color:var(--accent);
+  font-weight:700;
+  letter-spacing:3px;
+  font-size:14px;
+  text-transform:uppercase;
+}
+.team-eyebrow::before,
+.team-eyebrow::after{
+  content:"";
+  width:50px;
+  height:2px;
+  background:var(--accent);
+}
+
+/* العنوان الكبير */
+.team-title{
+  font-size:clamp(32px,5vw,56px);
+  font-weight:800;
+  margin:14px 0 10px;
+  color:#fff;
+}
+
+/* الجملة اللي تحت العنوان */
+.team-desc{
+  font-size:18px;
+  color:var(--muted);
+  margin:0;
+}
+
+/* ===== الكارت ===== */
+.team-card{
+  position:relative;
+  aspect-ratio:3/4;
+  border-radius:22px;
+  overflow:hidden;
+  cursor:pointer;
+  background:#111;
+}
+
+/* صورة واحدة بس */
+.team-img{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+  z-index:1;
+}
+
+/* غطاء بيخلي الصورة أبيض وأسود، وبيتشال من تحت لفوق عند الهوفر */
+.team-card::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:2;
+  pointer-events:none;
+  background:#808080;
+  mix-blend-mode:saturation;
+  transform-origin:top;
+  transform:scaleY(1);
+  transition:transform .7s cubic-bezier(.65,0,.35,1);
+}
+.team-card:hover::before{
+  transform:scaleY(0);
+}
+
+/* تدرج غامق تحت الكتابة عشان تبان */
+.team-card::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:3;
+  pointer-events:none;
+  background:linear-gradient(to top,rgba(0,0,0,.85) 0%,rgba(0,0,0,.35) 35%,transparent 60%);
+}
+
+/* ===== الكتابة على الصورة (ثابتة قبل وبعد الهوفر) ===== */
+.team-info{
+  position:absolute;
+  left:20px;
+  right:60px;
+  bottom:20px;
+  z-index:4;
+}
+.team-info h3{
+  font-size:20px;
+  font-weight:700;
+  line-height:1.25;
+  margin:0 0 6px;
+  color:#fff;
+}
+.team-role{
+  font-size:14px;
+  color:#d0d3db;
+}
+.team-sub{
+  font-size:12px;
+  color:var(--muted);
+  margin-top:2px;
+}
+
+/* الاسم المستعار العمودي */
+.team-tag{
+  position:absolute;
+  right:16px;
+  bottom:20px;
+  z-index:4;
+  writing-mode:vertical-rl;
+  transform:rotate(180deg);
+  font-weight:800;
+  letter-spacing:2px;
+  font-size:14px;
+  color:#fff;
+}
+.team-card:hover .team-tag{
+  color:var(--accent);
+}
+/* --------------------------------------------------- */
+.contact-section{
+  --accent:#c8f03c;
+  --muted:#a9adb8;
+  --card:#2a3142;
+  --field:#3b4458;
+  background:#0b0d14;
+  color:#fff;
+  padding:80px 0;
+  scroll-margin-top:80px;
+}
+
+/* ===== العنوان ===== */
+.contact-head{
+  margin-bottom:50px;
+}
+.contact-eyebrow{
+  display:inline-flex;
+  align-items:center;
+  gap:14px;
+  color:var(--accent);
+  font-weight:700;
+  letter-spacing:3px;
+  font-size:14px;
+}
+.contact-eyebrow::before,
+.contact-eyebrow::after{
+  content:"";
+  width:50px;
+  height:2px;
+  background:var(--accent);
+}
+.contact-title{
+  font-size:clamp(32px,5vw,56px);
+  font-weight:800;
+  margin:14px 0 10px;
+  color:#fff;
+}
+.contact-desc{
+  font-size:18px;
+  color:var(--muted);
+  margin:0;
+}
+
+/* ===== كروت المعلومات ===== */
+.contact-info-card{
+  display:flex;
+  align-items:center;
+  gap:20px;
+  background:var(--card);
+  border-radius:18px;
+  padding:28px 30px;
+  margin-bottom:22px;
+}
+.contact-icon{
+  flex:0 0 auto;
+  width:60px;
+  height:60px;
+  border-radius:50%;
+  background:var(--accent);
+  color:#111;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:24px;
+}
+.contact-info-card h3{
+  font-size:20px;
+  font-weight:700;
+  margin:0 0 4px;
+  color:#fff;
+}
+.contact-info-card p{
+  font-size:15px;
+  color:var(--muted);
+  margin:0;
+}
+
+/* ===== كارت Join Our Community ===== */
+.contact-community{
+  background:linear-gradient(135deg,#d4e836 0%,#c8f03c 50%,#7fe05a 100%);
+  border-radius:18px;
+  padding:34px 30px;
+  color:#111;
+}
+.contact-community h3{
+  font-size:26px;
+  font-weight:700;
+  margin:0 0 14px;
+  color:#111;
+}
+.contact-community p{
+  font-size:15px;
+  color:#3a4a10;
+  margin:0 0 22px;
+}
+.contact-socials{
+  display:flex;
+  gap:14px;
+}
+.contact-socials a{
+  width:48px;
+  height:48px;
+  border-radius:50%;
+  background:#111;
+  color:var(--accent);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:20px;
+  text-decoration:none;
+  transition:transform .3s, background .3s;
+}
+.contact-socials a:hover{
+  transform:translateY(-4px);
+  background:#000;
+}
+
+/* ===== كارت الفورم ===== */
+.contact-form-card{
+  background:var(--card);
+  border-radius:22px;
+  padding:34px 32px;
+  height:100%;
+}
+.contact-form-title{
+  font-size:26px;
+  font-weight:700;
+  margin:0 0 24px;
+  color:#fff;
+}
+.contact-form-card .form-label{
+  font-size:14px;
+  font-weight:700;
+  color:#fff;
+  margin-bottom:8px;
+}
+.contact-form-card .form-control,
+.contact-form-card .form-select{
+  background-color:var(--field);
+  border:1px solid rgba(255,255,255,.12);
+  border-radius:10px;
+  color:#fff;
+  padding:12px 16px;
+  box-shadow:none;
+}
+.contact-form-card .form-control::placeholder{
+  color:#b9bfce;
+}
+.contact-form-card .form-control:focus,
+.contact-form-card .form-select:focus{
+  background-color:var(--field);
+  color:#fff;
+  border-color:var(--accent);
+  box-shadow:0 0 0 .2rem rgba(200,240,60,.18);
+}
+.contact-form-card textarea.form-control{
+  resize:none;
+}
+/* سهم السلكت أبيض */
+.contact-form-card .form-select{
+  --bs-form-select-bg-img:url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23ffffff' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m2 5 6 6 6-6'/%3e%3c/svg%3e");
+}
+.contact-form-card .form-select option{
+  background:#2a3142;
+  color:#fff;
+}
+
+/* الشيك بوكس */
+.contact-form-card .form-check-label{
+  font-size:14px;
+  color:#d0d3db;
+}
+.contact-form-card .form-check-input{
+  background-color:#fff;
+  border-color:#fff;
+}
+.contact-form-card .form-check-input:checked{
+  background-color:var(--accent);
+  border-color:var(--accent);
+}
+
+/* زرار الإرسال */
+.contact-btn{
+  width:100%;
+  background:var(--accent);
+  color:#111;
+  font-weight:700;
+  font-size:16px;
+  border:0;
+  border-radius:10px;
+  padding:14px 20px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+  transition:transform .3s, box-shadow .3s;
+}
+.contact-btn:hover{
+  transform:translateY(-3px);
+  box-shadow:0 8px 24px rgba(200,240,60,.3);
+}
+
+/* الإحصائيات اللي تحت */
+.contact-stats{
+  display:flex;
+  justify-content:space-around;
+  text-align:center;
+  margin-top:30px;
+  padding-top:26px;
+  border-top:1px solid rgba(255,255,255,.12);
+}
+.contact-stats strong{
+  display:block;
+  font-size:30px;
+  font-weight:800;
+  color:var(--accent);
+}
+.contact-stats span{
+  font-size:14px;
+  color:#d0d3db;
+}
+/* -------------------------------------------------------- */
+ 
+
+.game-footer {
+    width: 100%;
+    background: linear-gradient(
+         
+        #0D111B,
+        #0D111B,
+        #0D111B
+    );
+
+    color: #ffffff;
+    padding: 65px 0 55px;
+    font-family: Arial, sans-serif;
+}
+
+
+/* ================= Footer Top ================= */
+
+.footer-top {
+    padding-bottom: 35px;
+}
+
+
+/* ================= Logo & About ================= */
+
+.footer-logo {
+    font-size: 22px;
+    font-weight: bold;
+    margin-bottom: 28px;
+
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.logo-circle {
+    width: 27px;
+    height: 17px;
+    background-color: #ffffff;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.footer-about p {
+    color: #e0e0e8;
+    font-size: 16px;
+    line-height: 1.8;
+    max-width: 300px;
+    margin-bottom: 25px;
+}
+
+
+/* ================= Social Icons ================= */
+
+.social-icons {
+    display: flex;
+    align-items: center;
+    gap: 22px;
+}
+
+.social-icons a {
+    color: #ffffff;
+    font-size: 21px;
+    transition: 0.3s;
+}
+
+.social-icons a:hover {
+    color: #F0F065;
+}
+
+
+/* ================= Footer Links ================= */
+
+.footer-links h4 {
+    font-size: 21px;
+    font-weight: bold;
+    margin-bottom: 27px;
+    color: #ffffff;
+}
+
+.footer-links ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-links ul li {
+    margin-bottom: 17px;
+}
+
+.footer-links ul li a {
+    color: #eeeeF5;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 500;
+    transition: 0.3s;
+}
+
+.footer-links ul li a:hover {
+    color: #F0F065;
+    padding-left: 5px;
+}
+
+
+/* ================= Divider ================= */
+
+.footer-divider {
+    border: none;
+    border-top: 1px solid #777783;
+    opacity: 0.65;
+    margin: 12px 0 32px;
+}
+
+
+/* ================= Footer Bottom ================= */
+
+.footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.copyright {
+    color: #eeeeF5;
+    font-size: 15px;
+    font-weight: 600;
+    margin: 0;
+}
+
+.footer-policy {
+    display: flex;
+    gap: 28px;
+    flex-wrap: wrap;
+}
+
+.footer-policy a {
+    color: #eeeeF5;
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 500;
+    transition: 0.3s;
+}
+
+.footer-policy a:hover {
+    color: #F0F065;
+}
+
+
+/* ================= Responsive ================= */
+
+@media (max-width: 991px) {
+
+    .footer-about,
+    .footer-links {
+        margin-bottom: 35px;
+    }
+
+}
+
+@media (max-width: 576px) {
+
+    .game-footer {
+        padding: 45px 0 35px;
+    }
+
+    .footer-bottom {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .footer-policy {
+        gap: 15px;
+    }
+
+}
